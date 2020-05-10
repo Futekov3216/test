@@ -5,8 +5,10 @@
     <meta charset="utf-8" />
     <script>
 // Allow window to listen for a postMessage
+        var source;
     window.addEventListener("message", (event)=>{
         console.log(event) 
+        source = event.source
 // Normally you would check event.origin
         // To verify the targetOrigin matches
         // this window's domain
@@ -25,7 +27,7 @@ self.close();
 }
         
         function click(){
-            window.postMessage("hi", "*")
+            source.postMessage("hi", "*")
         }
     </script>
 </head>
