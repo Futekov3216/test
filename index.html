@@ -14,7 +14,7 @@
          auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
                // var auth_url
                      var window_ref
-      window.addEventListener('message', (event) => { 
+      window.addEventListener('message', (event) => {  
          window_ref = event.source 
       })
          window.open(auth_url, '_blank')
