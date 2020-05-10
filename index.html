@@ -18,14 +18,14 @@
       })
          window.open(auth_url, '_blank')
       }else{ 
-         console.log('window.location.search', window.location.search);
+         console.log('window.location.search --- ', window_ref);
          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
 
          // var node_id = window.location.search.match(/node_id_.*/)[1].replace(/\#_$/, '');
          var node_id = window.location.search.match(/node_id_.*/)[0].replace("node_id_", "")
          localStorage.setItem("instagram", JSON.stringify({"node_id":node_id, "insta_code":insta_code }))
       }
-
+      console.log('window_ref', window_ref) 
       window.addEventListener('storage', () => {
          window_ref.postMessage(JSON.stringify({"node_id":node_id, "insta_code":insta_code }),"https://sandbox.bg.nc/ilian1/Admin/index.html")
          window.close()
