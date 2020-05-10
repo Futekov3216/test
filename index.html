@@ -13,7 +13,9 @@
       window.addEventListener('message', (event) => { 
          console.log('event', event)
          window_ref = event.source 
+         console.log('ref', window_ref)
       })
+      console.log('opener', window.opener)
       if( window.location.href.match(/\?instagram_url=(.*)/) ){
          console.log('toka ?') 
          auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
