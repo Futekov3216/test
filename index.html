@@ -22,7 +22,7 @@
       }else{ 
 
          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
-         var return_origin = window.location.search.match((/return_url_(.*)end_url\?/g)).toString().replace(/return_url_|end_url\?/g, '');
+         var return_origin = window.location.search.match(/return_url_(.*)end_url/g).toString().replace(/return_url_|end_url/g, '');
          console.log('return_origin', return_origin)
          var node_id = window.location.search.match(/node_id_.*/)[0].replace("node_id_", "")
          localStorage.setItem("instagram", JSON.stringify({"node_id":node_id, "insta_code":insta_code }))
