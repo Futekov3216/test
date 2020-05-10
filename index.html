@@ -1,45 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title></title>
-    <meta charset="utf-8" />
-    <script>
-// Allow window to listen for a postMessage
-        var source;
-    window.addEventListener("message", (event)=>{
-        console.log(event) 
-        source = event.source
-// Normally you would check event.origin
-        // To verify the targetOrigin matches
-        // this window's domain
-        let txt=document.querySelector('#txtMsg');
-        // event.data contains the message sent
-        txt.value=`Name is ${event.data.pName} Age is  ${event.data.pAge}` ;
-      
-    });
-function closeMe() {
-        try {
-window.close();
-        } catch (e) { console.log(e) }
-        try {
-self.close();
-        } catch (e) { console.log(e) }
-}
-        
-        function click(){
-            source.postMessage("hi", "*")
-        }
-    </script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
 </head>
 <body>
-    <form>
-        <h1>Recipient of postMessage</h1>
-            <fieldset>
-                <input type='text' id='txtMsg' />
-                <input type='button' id='btnCloseMe' value='Close me' onclick='closeMe();' />
-                <button onclick='click();'>CLICK</button>
-            </fieldset>
-    
-    </form>
-</body> 
-</html> 
+
+   <script>
+      // var auth_url
+      if( window.location.href.match(/\?instagram_url=(.*)/) ){
+         auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
+         window.open(auth_url, '_blank')
+      }else{
+         console.log('window.location.search', window.location.search);
+         var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
+
+         // var node_id = window.location.search.match(/node_id_.*/)[1].replace(/\#_$/, '');
+         var node_id = window.location.search.match(/node_id_.*/)[0].replace("node_id_", "")
+         localStorage.setItem("instagram", JSON.stringify({"node_id":node_id, "insta_code":insta_code }))
+      }
+      var window_ref
+      window.addEventListener('message', (event) => {
+         window_ref = event.source
+      })
+      window.addEventListener('storage', () => {
+         window_ref.postMessage(JSON.stringify({"node_id":node_id, "insta_code":insta_code }),"https://sandbox.bg.nc/ilian1/Admin/index.html")
+         window.close()
+      })
+         // setInterval(() => {
+         //    Object.entries(localStorage)
+         //    window.postMessage(Object.entries(localStorage),"https://sandbox.bg.nc/")
+         // }, 3000)
+      // }
+      // setInterval(() => {
+      //    console.log('hi');
+      // }, 3000)
+
+   </script>
+</body>
+</html>
