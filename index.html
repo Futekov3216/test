@@ -21,7 +21,7 @@
          auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
          window.open(auth_url, '_blank')
       }else{ 
-         console.log('toka ? else')
+         console.log('toka ? else') 
          console.log('window.location.search --- ', window_ref);
          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
 
