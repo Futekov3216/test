@@ -9,14 +9,14 @@
 
    <script>
       // var auth_url
-      if( window.location.href.match(/\?instagram_url=(.*)/) ){
-         console.log('toka ?') 
-         auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
-               var window_ref
-      window.addEventListener('message', (event) => {
+                     var window_ref
+      window.addEventListener('message', (event) => { 
          console.log('event', event)
          window_ref = event.source 
       })
+      if( window.location.href.match(/\?instagram_url=(.*)/) ){
+         console.log('toka ?') 
+         auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
          window.open(auth_url, '_blank')
       }else{ 
          console.log('toka ? else')
