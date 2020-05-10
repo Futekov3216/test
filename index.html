@@ -10,6 +10,7 @@
    <script>
       // var auth_url
       if( window.location.href.match(/\?instagram_url=(.*)/) ){
+         console.log('toka ?')
          auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
                var window_ref
       window.addEventListener('message', (event) => {
@@ -18,6 +19,7 @@
       })
          window.open(auth_url, '_blank')
       }else{ 
+         console.log('toka ? else')
          console.log('window.location.search --- ', window_ref);
          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
 
