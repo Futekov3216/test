@@ -17,7 +17,7 @@
       window.addEventListener('message', (event) => { 
          window_ref = event.source 
       })
-         window.open(auth_url, '_self')
+         window.open(auth_url, '_blank')
       }else{ 
 
          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
