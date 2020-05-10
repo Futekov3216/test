@@ -17,7 +17,7 @@
          window_ref = event.source
       })
          window.open(auth_url, '_blank')
-      }else{
+      }else{ 
          console.log('window.location.search', window.location.search);
          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
 
