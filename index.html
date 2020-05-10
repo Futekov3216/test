@@ -11,12 +11,11 @@
       // var auth_url
       if( window.location.href.match(/\?instagram_url=(.*)/) ){
          console.log('toka ?') 
-         console.log(window.opener) 
          auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
                var window_ref
       window.addEventListener('message', (event) => {
          console.log('event', event)
-         window_ref = event.source
+         window_ref = event.source 
       })
          window.open(auth_url, '_blank')
       }else{ 
