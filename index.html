@@ -22,6 +22,10 @@ window.close();
 self.close();
         } catch (e) { console.log(e) }
 }
+        
+        function click(){
+            window.postMessage("hi", "https://sandbox.bg.nc")
+        }
     </script>
 </head>
 <body>
@@ -30,6 +34,7 @@ self.close();
             <fieldset>
                 <input type='text' id='txtMsg' />
                 <input type='button' id='btnCloseMe' value='Close me' onclick='closeMe();' />
+                <button onclick='click();'>CLICK</button>
             </fieldset>
    
     </form>
