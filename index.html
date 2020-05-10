@@ -11,6 +11,11 @@
       // var auth_url
       if( window.location.href.match(/\?instagram_url=(.*)/) ){
          auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
+               var window_ref
+      window.addEventListener('message', (event) => {
+         console.log('event', event)
+         window_ref = event.source
+      })
          window.open(auth_url, '_blank')
       }else{
          console.log('window.location.search', window.location.search);
@@ -20,11 +25,7 @@
          var node_id = window.location.search.match(/node_id_.*/)[0].replace("node_id_", "")
          localStorage.setItem("instagram", JSON.stringify({"node_id":node_id, "insta_code":insta_code }))
       }
-      var window_ref
-      window.addEventListener('message', (event) => {
-         console.log('event', event)
-         window_ref = event.source
-      })
+
       window.addEventListener('storage', () => {
          window_ref.postMessage(JSON.stringify({"node_id":node_id, "insta_code":insta_code }),"https://sandbox.bg.nc/ilian1/Admin/index.html")
          window.close()
