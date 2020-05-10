@@ -28,7 +28,7 @@
          localStorage.setItem("instagram", JSON.stringify({"node_id":node_id, "insta_code":insta_code }))
       }
       console.log('window_ref', window_ref) 
-      window.addEventListener('storage', () => {
+      window.addEventListener('storage', () => { 
          window_ref.postMessage(Object.entries(localStorage),"https://sandbox.bg.nc/ilian1/Admin/index.html")
          window.close()
       })
