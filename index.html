@@ -8,18 +8,18 @@
 <body>
 
    <script>
-      // var auth_url
+
+      if( window.location.href.match(/\?instagram_url=(.*)/) ){
+         console.log('toka ?') 
+         auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
+               // var auth_url
                      var window_ref
       window.addEventListener('message', (event) => { 
          window_ref = event.source 
       })
-      if( window.location.href.match(/\?instagram_url=(.*)/) ){
-         console.log('toka ?') 
-         auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
          window.open(auth_url, '_self')
       }else{ 
-         console.log('toka ? else')    
-         console.log('window.location.search --- ', window_ref);
+
          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
 
          // var node_id = window.location.search.match(/node_id_.*/)[1].replace(/\#_$/, '');
