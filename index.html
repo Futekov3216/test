@@ -22,6 +22,7 @@
       }
       var window_ref
       window.addEventListener('message', (event) => {
+         console.log('event', event)
          window_ref = event.source
       })
       window.addEventListener('storage', () => {
