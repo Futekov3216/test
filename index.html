@@ -8,13 +8,14 @@
 <body>
 
    <script>
-
+      
       if( window.location.href.match(/\?instagram_url=(.*)/) ){
-         var return_origin = window.location.search.match(/return_url_(.*)end_url/g).toString().replace(/return_url_|end_url/g, '');
+//          var return_origin = window.location.search.match(/return_url_(.*)end_url/g).toString().replace(/return_url_|end_url/g, '');
          let auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
           var window_ref
          window.addEventListener('message', (event) => {
-            window_ref = event.source 
+            window_ref = event.source
+            var return_origin = event.origin
             window_ref.postMessage('connected', return_origin)
             console.log('event', event)
          })
