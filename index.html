@@ -22,6 +22,12 @@
          })
             let instagram_window_auth = window.open('', '_blank') //prevent the pop up blocker.   
             instagram_window_auth.location.href = auth_url
+               window.addEventListener('storage', () => { 
+                  console.log('return_origin', return_origin)
+                  window_ref.postMessage(Object.entries(localStorage), return_origin) 
+                  localStorage.removeItem("instagram");
+                  window.close()
+               })
       }else{ 
 
          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
@@ -29,12 +35,6 @@
          localStorage.setItem("instagram", JSON.stringify({"node_id":node_id, "insta_code":insta_code }))
          window.close()
       }
-      window.addEventListener('storage', () => { 
-         console.log('return_origin', return_origin)
-         window_ref.postMessage(Object.entries(localStorage), return_origin) 
-         localStorage.removeItem("instagram");
-         window.close()
-      })
 
    </script>
 </body>
