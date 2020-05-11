@@ -14,7 +14,7 @@
          let auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1]
           var window_ref
          window.addEventListener('message', (event) => { 
-            window_ref = event.source
+            window_ref = event.source  
             var return_origin = event.origin
             window_ref.postMessage('connected', return_origin)
             console.log('event', event)
