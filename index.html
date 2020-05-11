@@ -19,7 +19,7 @@
             console.log('event', event)
          })
             let instagram_window_auth = window.open('', '_blank') //prevent the pop up blocker
-            instagram_window_auth.location.href = auth_url.  
+            instagram_window_auth.location.href = auth_url
       }else{ 
 
          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
