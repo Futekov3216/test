@@ -18,7 +18,8 @@
          window_ref = event.source 
          console.log('event', event)
       })
-         window.open(auth_url, '_blank')
+        let instagram_window_auth = window.open('', '_blank')
+        instagram_window_auth.location.href = auth_url
       }else{ 
 
          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
