@@ -20,6 +20,8 @@
             window_ref.postMessage('connected', return_origin) 
             console.log('event', event)
          })
+            console.log(return_origin)
+            console.log(window_ref)
             let instagram_window_auth = window.open('', '_blank') //prevent the pop up blocker.
             instagram_window_auth.location.href = auth_url
                window.addEventListener('storage', () => { 
