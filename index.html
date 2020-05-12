@@ -11,12 +11,17 @@
       
 //       if( window.location.href.match(/\?instagram_url=(.*)/) ){ // initial window called in iframe and opens the authentication window for instagram 
 //           let auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1];
-          var window_ref;
-          var return_origin;
-         window.addEventListener('message', (event) => {  
-            window_ref    = event.source;
-            return_origin = event.origin;
-            window_ref.postMessage('connected', return_origin); // send message to let the parent window know we have connection and stop trying 
+         var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
+         var node_id = window.location.search.match(/node_id_.*/)[0].replace("node_id_", "");
+//          localStorage.setItem("instagram", JSON.stringify({ "node_id":node_id, "insta_code":insta_code }))
+//           var window_ref;
+//           var return_origin;
+         window.addEventListener('message', (event) => {
+            if(event.data === "connect") {
+               let window_ref    = event.source;
+               let return_origin = event.origin;
+               window_ref.postMessage(JSON.stringify({ "node_id":node_id, "insta_code":insta_code }), return_origin); // send message to let the parent window know we have connection and stop trying 
+            }
          })  
 //          let instagram_window_auth = window.open('', '_blank'); //prevent the pop up blocker.
 //          instagram_window_auth.location.href = auth_url;
