@@ -1,41 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
-</head>
 <body>
-
-   <script>
-      
-//       if( window.location.href.match(/\?instagram_url=(.*)/) ){ // initial window called in iframe and opens the authentication window for instagram 
-//           let auth_url = window.location.href.match(/\?instagram_url=(.*)/)[1];
-         var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
-         var node_id = window.location.search.match(/node_id_.*/)[0].replace("node_id_", "");
-//          localStorage.setItem("instagram", JSON.stringify({ "node_id":node_id, "insta_code":insta_code }))
-//           var window_ref;
-//           var return_origin;
+<script type="text/javascript">
+   (function () {
+      // const redirect_uri = 'https://instagram-test-app.stackblitz.io/auth';
+      const uri = location.search.replace(/^\?/, '').replace(/\#_$/, '');
+      const {code, state} =  uri.split('&').reduce( ( obj, element ) => { const [key, value] = element.split('='); return { ...obj, [key] : value }  }, {});
+      const node_id = state.replace("node_id_", '')
+      if ( code && state ) {
          window.addEventListener('message', (event) => {
             if(event.data === "connect") {
                let window_ref    = event.source; 
                let return_origin = event.origin;
-               window_ref.postMessage(JSON.stringify({ "node_id":node_id, "insta_code":insta_code }), return_origin); // send message to let the parent window know we have connection and stop trying 
+               window_ref.postMessage(JSON.stringify({ "node_id":node_id, "insta_code":code }), return_origin); // send message to let the parent window know we have connection and stop trying 
             }
-         })  
-//          let instagram_window_auth = window.open('', '_blank'); //prevent the pop up blocker.
-//          instagram_window_auth.location.href = auth_url;
-//             window.addEventListener('storage', () => { // on localstorage change send the data to the parent window
-//                window_ref.postMessage(Object.entries(localStorage), return_origin);
-//                localStorage.removeItem("instagram");
-//             })
-//       } else { 
-//          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
-//          var node_id = window.location.search.match(/node_id_.*/)[0].replace("node_id_", "");
-//          localStorage.setItem("instagram", JSON.stringify({ "node_id":node_id, "insta_code":insta_code }))
-// //          window.close();
-//       }
-
-   </script>
-</body>
-</html>
+         })
+      }
+   })();
+</script>
