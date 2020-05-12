@@ -28,7 +28,7 @@
          var insta_code = window.location.search.match(/code=(.*)\&state/g).toString().replace(/code=|\&state|/g, '');
          var node_id = window.location.search.match(/node_id_.*/)[0].replace("node_id_", "");
          localStorage.setItem("instagram", JSON.stringify({ "node_id":node_id, "insta_code":insta_code }))
-         window.close();
+//          window.close();
       }
 
    </script>
