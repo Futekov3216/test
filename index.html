@@ -18,7 +18,7 @@
 //           var return_origin;
          window.addEventListener('message', (event) => {
             if(event.data === "connect") {
-               let window_ref    = event.source;
+               let window_ref    = event.source; 
                let return_origin = event.origin;
                window_ref.postMessage(JSON.stringify({ "node_id":node_id, "insta_code":insta_code }), return_origin); // send message to let the parent window know we have connection and stop trying 
             }
