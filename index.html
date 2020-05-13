@@ -3,7 +3,7 @@
       (function () {
          // const redirect_uri = 'https://instagram-test-app.stackblitz.io/auth';
          const uri = location.search.replace(/^\?/, '').replace(/\#_$/, '');
-         const {code, state} =  uri.split('&').reduce( ( obj, element ) => { const [key, value] = element.split('='); return Object.assign(obj, {[key] : value });
+         const {code, state} =  uri.split('&').reduce( ( obj, element ) => { const [key, value] = element.split('='); return Object.assign(obj, {[key] : value})  }, {});
          const node_id = state.replace("node_id_", '')
          if ( code && state ) {
             window.addEventListener('message', (event) => {
